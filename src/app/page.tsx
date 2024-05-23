@@ -1,4 +1,3 @@
-import AppRouter from "next/dist/client/components/app-router";
 import React from "react";
 import Login from "../pages/Login";
 import Contact from "../pages/Contact";
