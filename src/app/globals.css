@@ -2,32 +2,99 @@
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+
+/* Efeito de hover no background */
+.hover-effect {
+  background-color: #000000;
+  border: 2px solid transparent; /* Predefine a borda para evitar mudança de layout ao aplicar o hover */
+  transition: all 0.8s ease; /* Adiciona uma transição suave para o efeito de hover */
+  /* display: flex; */
+  /* align-items: center; */
+  /* justify-content: center; */
+  /* text-align: center; */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.hover-effect:hover {
+  border-color: green; /* Muda a cor da borda para verde */
+  box-shadow: inset 0 0 70px green; /* Adiciona uma sombra interna verde */
+}
+
+/* Efeito de chuva do background */
+@keyframes rain {
+  0% {
+    transform: translateY(0);
+  }
+  100% {
+    transform: translateY(100vh);
   }
 }
 
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+@keyframes drop {
+  0% {
+    transform: scaleY(0);
+  }
+  50%,
+  100% {
+    transform: scaleY(1);
+  }
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
+.raindrop {
+  @apply absolute;
+  width: 2px;
+  height: 15px;
+  background-color: rgb(51, 247, 60);
+  opacity: 0.5;
+  animation: rain 0.5s linear infinite;
+}
+
+/* Efeito de pulsar */
+.pulsar {
+  display: inline-block;
+  background-color: red;
+  border-radius: 50%;
+  width: 100px;
+  height: 100px;
+  animation: pulsarAnimation 1s infinite ease-in-out;
+}
+
+@keyframes pulsarAnimation {
+  0%, 100% {
+      transform: scale(1);
+  }
+  50% {
+      transform: scale(1.2); /* Aumenta o tamanho em 20% */
+  }
+}
+
+/* Efeito de rotação com mouse */
+.container {
+  /* width: 100%; */
+  /* height: 100vh; Altura total da viewport */
+  background-color: #f0f0f0; /* Cor de fundo cinza claro */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.5s ease; /* Suaviza a transformação */
+}
+
+.container:hover {
+  transform: rotate(10deg); /* Rotação de 10 graus ao passar o mouse */
+}
+
+/* Pulsar para o background */
+.pulsing-background {
+  width: 100%;
+  height: 100vh; /* Altura total da viewport */
+  background-color: #006319; /* Cor inicial */
+  animation: pulsingBackground 0.8s infinite alternate ease-in-out;
+}
+
+@keyframes pulsingBackground {
+  0% {
+      background-color: #003f05;
+  }
+  100% {
+      background-color: #000000; /* Cor alterada para um verde claro */
   }
 }
