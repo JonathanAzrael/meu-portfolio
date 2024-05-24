@@ -11,11 +11,7 @@ export default function Projects(){
           <HeaderBar />
           <div className="flex">
             <a href="https://github.com/JonathanAzrael/itau_web">
-              {/* <Image
-                src=[]
-                alt="itau"
-                className="w-full h-screen"
-              /> */}
+              Teste
             </a>
           </div>
         </Background>
